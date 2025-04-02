@@ -50,6 +50,7 @@ function MobileMenuCart({ update }: {update: any}) {
             key={link.id}
             variant="link"
             asChild
+            onClick={update}
           >
             <Link href={link.href}>{link.title}</Link>
           </Button>
