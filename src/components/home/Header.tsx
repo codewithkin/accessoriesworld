@@ -45,7 +45,7 @@ function Header() {
 
   useEffect(() => {
     getRandomHeader();
-  });
+  }, []);
 
   return (
     <motion.header className="min-h-screen w-full flex flex-col justify-center items-center mx-auto p-4 md:p-0">
@@ -91,5 +91,8 @@ function Header() {
     </motion.header>
   );
 }
+
+// Revalidate (choose a new header) every 24 hours
+export const revalidate = 60 * 60 * 24;
 
 export default Header;
