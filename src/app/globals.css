@@ -87,6 +87,6 @@
 
 @layer components {
   .section {
-    @apply py-20 md:py-80;
+    @apply pt-20 md:pt-80;
   }
 }
