@@ -89,4 +89,8 @@
   .section {
     @apply pt-20 md:pt-80;
   }
+
+  .heading {
+    @apply text-2xl md:text-4xl font-semibold
+  }
 }

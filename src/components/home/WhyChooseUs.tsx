@@ -78,7 +78,7 @@ function WhyChooseUs() {
     <AnimateIntoView>
       <section className="section">
         <article className="flex flex-col gap-2 items-center text-center">
-          <h3 className="text-2xl md:text-4xl font-semibold">
+          <h3 className="heading">
             Because your gadgets deserve the best
           </h3>
           <p className="text-slate-500 text-md md:max-w-3xl text-center">
