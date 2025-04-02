@@ -11,7 +11,7 @@ function MobileNavbar() {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <nav className="grid md:hidden w-full">
+    <nav className="grid md:hidden w-full border-b border-slate-200">
       <article className="flex p-4 gap-2 w-full justify-between items-center">
           <Menu onClick={() => setOpen(!open)} size={28} />
 
