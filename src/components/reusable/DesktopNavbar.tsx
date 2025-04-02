@@ -28,7 +28,7 @@ function DesktopNavbar() {
   ];
 
   return (
-    <nav className="flex items-center justify-between w-full py-4 px-4 md:px-12">
+    <nav className="hidden md:flex items-center justify-between w-full py-4 px-4 md:px-12">
       <h1 className="text-2xl text-red-500 font-semibold">Accessories World</h1>
 
       <article className="flex gap-4 items-center justify-center">
