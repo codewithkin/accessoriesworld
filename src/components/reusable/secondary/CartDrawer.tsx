@@ -20,7 +20,7 @@ function CartDrawer() {
           <ShoppingCart />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right">
+      <SheetContent className="w-full h-full overflow-y-auto" side="right">
         <SheetHeader>
           <SheetTitle className="text-xl">Your Cart</SheetTitle>
           <SheetDescription>The items you're currently buying</SheetDescription>
