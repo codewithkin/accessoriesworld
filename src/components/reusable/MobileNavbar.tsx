@@ -13,9 +13,12 @@ function MobileNavbar() {
   return (
     <nav className="grid md:hidden w-full border-b border-slate-200 shadow-sm">
       <article className="flex p-4 gap-2 w-full justify-between items-center">
-          <Menu onClick={() => setOpen(!open)} size={28} />
+        <Menu onClick={() => setOpen(!open)} size={28} />
 
-       <AnimatePresence> {open && <MobileMenuCart update={() => setOpen(!open)} />}</AnimatePresence>
+        <AnimatePresence>
+          {" "}
+          {open && <MobileMenuCart update={() => setOpen(!open)} />}
+        </AnimatePresence>
 
         <h1 className="text-2xl text-red-500 font-semibold">
           Accessories World
