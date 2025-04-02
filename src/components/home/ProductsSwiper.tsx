@@ -5,7 +5,13 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { Flame } from "lucide-react";
@@ -26,7 +32,8 @@ function ProductsSwiper() {
       stock: 10,
       price: 15,
       category: "device",
-      description: "A pair of wireless headphones with a microphone and LED indicators",
+      description:
+        "A pair of wireless headphones with a microphone and LED indicators",
       hot: true,
     },
     {
@@ -67,7 +74,8 @@ function ProductsSwiper() {
       stock: 17,
       price: 25,
       category: "device",
-      description: "A 4-in-1 smartwatch with a fitness tracker, heart rate monitor, and GPS",
+      description:
+        "A 4-in-1 smartwatch with a fitness tracker, heart rate monitor, and GPS",
       hot: true,
     },
     {
@@ -118,9 +126,9 @@ function ProductsSwiper() {
       spaceBetween={20}
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       breakpoints={{
-        320: { slidesPerView: 1 },  // Mobile screens
-        640: { slidesPerView: 2 },  // Tablets
-        768: { slidesPerView: 3 },  // Medium screens
+        320: { slidesPerView: 1 }, // Mobile screens
+        640: { slidesPerView: 2 }, // Tablets
+        768: { slidesPerView: 3 }, // Medium screens
         1024: { slidesPerView: 5 }, // Large screens and up (XL, XXL)
       }}
       onSlideChange={() => console.log("slide change")}
@@ -131,30 +139,33 @@ function ProductsSwiper() {
         <SwiperSlide key={index}>
           <Card className="flex flex-col items-center justify-center w-fit">
             <CardContent>
-            <Image
-              src={product.imageUrl}
-              alt={product.name}
-              width={200}
-              height={200}
-              className=" object-cover w-full"
-            />
-            <CardHeader className="px-0 py-4">
-            <CardTitle className="text-lg font-semibold">{product.name}</CardTitle>
-            <CardDescription>{product.description}</CardDescription>
-            <article className="w-full items-center justify-between flex">
-                <h4 className="text-2xl font-semibold">${product.price}</h4>
-            {
-                product.hot ?
-                <Badge variant="default" className="bg-red-600 text-white flex items-center">
-                    <Flame />
-                    <span>Hot</span>
-                </Badge>
-                :
-                 <Badge variant="secondary">{product.category}</Badge>
-            }
-
-            </article>
-            </CardHeader>
+              <Image
+                src={product.imageUrl}
+                alt={product.name}
+                width={200}
+                height={200}
+                className=" object-cover w-full"
+              />
+              <CardHeader className="px-0 py-4">
+                <CardTitle className="text-lg font-semibold">
+                  {product.name}
+                </CardTitle>
+                <CardDescription>{product.description}</CardDescription>
+                <article className="w-full items-center justify-between flex">
+                  <h4 className="text-2xl font-semibold">${product.price}</h4>
+                  {product.hot ? (
+                    <Badge
+                      variant="default"
+                      className="bg-red-600 text-white flex items-center"
+                    >
+                      <Flame />
+                      <span>Hot</span>
+                    </Badge>
+                  ) : (
+                    <Badge variant="secondary">{product.category}</Badge>
+                  )}
+                </article>
+              </CardHeader>
             </CardContent>
           </Card>
         </SwiperSlide>
