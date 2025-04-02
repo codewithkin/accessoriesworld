@@ -16,7 +16,7 @@ function CartDrawer() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button type="button" variant="ghost">
+        <Button size="lg" type="button" variant="ghost">
           <ShoppingCart />
         </Button>
       </SheetTrigger>
