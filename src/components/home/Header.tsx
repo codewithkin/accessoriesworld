@@ -48,7 +48,21 @@ function Header() {
   }, []);
 
   return (
-    <motion.header className="min-h-screen w-full flex flex-col justify-center items-center mx-auto p-4 md:p-0">
+    <motion.header 
+    initial={{
+      y: 200,
+      opacity: 0
+    }}
+
+    animate={{
+      y: 1,
+      opacity: 1
+    }}
+
+    transition={{
+      duration: 0.8
+    }}
+    className="min-h-screen w-full flex flex-col justify-center items-center mx-auto p-4 md:p-0">
       <Badge
         className="px-4 py-2 flex items-center gap-4 bg-purple-500 text-white rounded-full"
         variant="outline"
