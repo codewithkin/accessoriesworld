@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,
@@ -83,9 +84,16 @@ function DesktopNavbar() {
               <h2 className="text-2xl font-semibold">Cart is empty</h2>
               <p>There's nothing in your cart yet</p>
             </article>
-            <Button variant="secondary" asChild>
-              <Link href="/products">Find something to buy</Link>
-            </Button>
+            <article className="flex flex-row md:flex-col gap-2 items-center">
+              <Button className="w-full" variant="default" asChild>
+                <Link href="/products">Find something to buy</Link>
+              </Button>
+              <SheetClose asChild>
+                <Button className="w-full" variant="secondary">
+                  Close
+                </Button>
+              </SheetClose>
+            </article>
           </article>
         </SheetContent>
       </Sheet>
