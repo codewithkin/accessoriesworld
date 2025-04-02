@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import CartDrawer from "./secondary/CartDrawer";
 import { Button } from "../ui/button";
 import MobileMenuCart from "./secondary/MobileMenuCart";
+import { AnimatePresence } from "framer-motion";
 
 function MobileNavbar() {
   // Track the open / close state of the mobile navbar
@@ -12,11 +13,9 @@ function MobileNavbar() {
   return (
     <nav className="grid md:hidden w-full">
       <article className="flex p-4 gap-2 w-full justify-between items-center">
-        <Button variant="default" type="button" onClick={() => setOpen(!open)}>
-          <Menu />
-        </Button>
+          <Menu onClick={() => setOpen(!open)} size={28} />
 
-        {open && <MobileMenuCart />}
+       <AnimatePresence> {open && <MobileMenuCart update={() => setOpen(!open)} />}</AnimatePresence>
 
         <h1 className="text-2xl text-red-500 font-semibold">
           Accessories World

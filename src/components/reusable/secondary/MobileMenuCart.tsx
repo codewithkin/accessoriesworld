@@ -1,16 +1,9 @@
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import {motion} from "framer-motion";
 
-function MobileMenuCart({ update }: any) {
+function MobileMenuCart({ update }: {update: any}) {
   const links = [
     {
       id: 1,
@@ -35,7 +28,20 @@ function MobileMenuCart({ update }: any) {
   ];
 
   return (
-    <article className="fixed left-0 right-0 top-0 p-4 flex flex-col bg-white min-h-screen justify-between">
+    <motion.article 
+    initial={{
+      width: "0%",
+      opacity: 0
+    }}
+    animate={{
+      width: "100%",
+      opacity: 1
+    }}
+    exit={{
+      width: "0%",
+      opacity: 0
+    }}
+    className="fixed left-0 right-0 top-0 p-4 flex flex-col bg-white min-h-screen justify-between">
       <article className="flex flex-col gap-8">
         <h2 className="text-xl font-semibold">Navigation Menu</h2>
         {links.map((link: { title: string; href: string; id: number }) => (
@@ -53,7 +59,7 @@ function MobileMenuCart({ update }: any) {
       <Button onClick={update} variant="secondary" className="w-full">
         Close
       </Button>
-    </article>
+    </motion.article>
   );
 }
 
