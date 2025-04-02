@@ -1,13 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function WhatCustomersSay() {
   return (
-    <section className='section'>
-        <article>
-            
-        </article>
+    <section className="section">
+      <article></article>
     </section>
-  )
+  );
 }
 
-export default WhatCustomersSay
+export default WhatCustomersSay;

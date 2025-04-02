@@ -78,9 +78,7 @@ function WhyChooseUs() {
     <AnimateIntoView>
       <section className="section">
         <article className="flex flex-col gap-2 items-center text-center">
-          <h3 className="heading">
-            Because your gadgets deserve the best
-          </h3>
+          <h3 className="heading">Because your gadgets deserve the best</h3>
           <p className="text-slate-500 text-md md:max-w-3xl text-center">
             At Accessories World, we know good accessories make life easier. A
             strong charging cable, clear-sounding earphones, or a long-lasting
@@ -91,7 +89,10 @@ function WhyChooseUs() {
 
         <article className="grid gap-4 md:grid-cols-3 mt-8 p-4 sm:p-10 lg:p-20">
           {whyChooseUsPoints.map((point: WhyChooseUsPoint) => (
-            <Card className={`${point.title === "Affordable Prices" || point.title === "100% Satisfaction Guaranteed" && "bg-gradient-to-tr from-black text-white to-purple-800"}`} key={point.title}>
+            <Card
+              className={`${point.title === "Affordable Prices" || (point.title === "100% Satisfaction Guaranteed" && "bg-gradient-to-tr from-black text-white to-purple-800")}`}
+              key={point.title}
+            >
               <CardContent className="flex flex-col">
                 <CardHeader className="flex flex-col justify-center items-center">
                   {/* Icon */}
@@ -111,7 +112,10 @@ function WhyChooseUs() {
                       variant="link"
                       asChild
                     >
-                      <Link className={`${point.title === "Affordable Prices" || point.title === "100% Satisfaction Guaranteed" && "text-white"}`} href={point.href}>
+                      <Link
+                        className={`${point.title === "Affordable Prices" || (point.title === "100% Satisfaction Guaranteed" && "text-white")}`}
+                        href={point.href}
+                      >
                         <span>Learn more</span>
                         <ArrowRight size={24} />
                       </Link>
