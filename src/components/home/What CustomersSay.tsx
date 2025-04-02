@@ -14,6 +14,8 @@ function WhatCustomersSay() {
             people are saying about our accessories.
           </p>
         </article>
+
+        
       </section>
     </AnimateIntoView>
   );

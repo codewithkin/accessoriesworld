@@ -95,6 +95,6 @@
   }
 
   .subheading {
-    @apply text-slate-500 text-md md:max-w-3xl text-center
+    @apply text-slate-500 md:max-w-3xl text-center
   }
 }
