@@ -24,7 +24,7 @@ export type Product = {
   category: "accessory" | "device" | "both" | "add-on";
   description: string;
   hot?: boolean;
-}
+};
 
 function ProductsSwiper() {
   const products: Product[] = [
