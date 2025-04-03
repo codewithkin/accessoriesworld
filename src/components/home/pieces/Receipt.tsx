@@ -1,6 +1,6 @@
 import { formatCurrency } from "@/components/reusable/secondary/CartDrawer";
 import { Label } from "@/components/ui/label";
-import { Receipt as ReceiptType } from "@prisma/client";
+import { Product, Receipt as ReceiptType } from "@prisma/client";
 import { CheckCheckIcon } from "lucide-react";
 import React from "react";
 
@@ -23,20 +23,26 @@ function Receipt({ receipt }: { receipt: any }) {
       </article>
 
       {/* Details */}
-      <article className="flex flex-col gap-4 items-center w-full">
-        <Label>Items bought</Label>
+      <article className="flex flex-col gap-4 w-full my-8">
+        <Label className="text-lg">Items bought</Label>
 
         <article className="flex flex-col gap-2 w-full">
-          {receipt.items.map((item: any) => {
+          {receipt.products.map((product: Product) => {
             return (
               <article
-                key={item.name}
-                className="flex justify-between items-center"
+                key={product.name}
+                className="flex justify-between items-center w-full"
               >
-                <article className="flex gap-2 items-center"></article>
+                <h3 className="text-md font-medium">{product.name}</h3>
+                <p>{formatCurrency(product.price)}</p>
               </article>
             );
           })}
+        </article>
+
+        <article className="flex justify-between items-center w-full">
+          <h3 className="text-lg font-medium">Total</h3>
+          <p>{formatCurrency(receipt.totalAmount)}</p>
         </article>
       </article>
     </article>
