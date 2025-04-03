@@ -27,7 +27,7 @@ function Metrics() {
 
   return (
     <AnimateIntoView>
-      <section className="grid p-8 sm:p-12 md:p-16 md:grid-cols-3 gap-16 md:gap-4 items-center bg-gradient-to-r from-black via-purple-800 to-purple-500">
+      <section className="grid p-8 sm:p-12 mt-20 md:p-16 md:grid-cols-3 gap-16 md:gap-4 items-center bg-gradient-to-r from-black via-purple-800 to-purple-500">
         {metrics.map((metric: Metric) => (
           <article key={metric.id} className="flex flex-col gap-2 items-center">
             <h4 className="text-5xl text-white font-semibold">
