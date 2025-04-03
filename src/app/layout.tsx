@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/reusable/DesktopNavbar";
 import Footer from "@/components/reusable/Footer";
 import MobileNavbar from "@/components/reusable/MobileNavbar";
+import QueryClientWrapper from "@/providers/QueryClientWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +31,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        <MobileNavbar />
-        {children}
-        <Footer />
+        <QueryClientWrapper>
+          <Navbar />
+          <MobileNavbar />
+          {children}
+          <Footer />
+        </QueryClientWrapper>
       </body>
     </html>
   );
