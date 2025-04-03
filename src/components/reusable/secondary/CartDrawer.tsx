@@ -34,14 +34,11 @@ function CartDrawer() {
         </SheetHeader>
 
         {cart.length > 0 ? (
-          <article className="flex flex-col gap-2 h-full overflow-y-auto">
+          <article className="flex flex-col gap-4 h-full overflow-y-auto p-4">
             {/* Map all of the cart items */}
-
-            {
-              cart.map((product: Product) => (
-                <ProductInCart key={product.description} product={product} />
-              ))
-            }
+            {cart.map((product: Product) => (
+              <ProductInCart key={product.description} product={product} />
+            ))}
           </article>
         ) : (
           <article className="flex flex-col gap-4 items-center justify-center text-center w-full h-full">
