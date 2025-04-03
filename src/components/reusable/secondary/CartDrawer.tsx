@@ -124,10 +124,16 @@ function CartDrawer() {
         )}
 
         <article className="w-full flex justify-end items-end px-4">
-          {/* Checkout button */}
+          <article className="flex gap-2 items-center">
+            {/* Clear button */}
+          <Button variant="secondary" type="button" onClick={() => clearCart()}>
+            Clear Cart
+          </Button>
+            {/* Checkout button */}
           <Button type="button" onClick={() => checkout()}>
             Pay now
           </Button>
+          </article>
         </article>
 
         <article className="p-4 border-t border-slate-300 flex justify-between items-center">
