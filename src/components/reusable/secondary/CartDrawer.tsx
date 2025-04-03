@@ -18,7 +18,7 @@ import ProductInCart from "./ProductInCart";
 import { use, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import axios from "axios";
 import {
   Popover,
@@ -38,6 +38,9 @@ const formatCurrency = (amount: number, currency = "USD") => {
 function CartDrawer() {
   // Get all the items in the user's cart
   const cart = useCartStore((state) => state.cart);
+
+  // Router function for redirects
+  const router = useRouter();
 
   // Check whether or not the user's details have been updates
   const [details, setDetails] = useState(false);
@@ -82,7 +85,7 @@ function CartDrawer() {
       console.log("Receipt: ", receipt);
 
       // Redirect the user to the receipt download page
-      redirect(`/receipts/${receipt.id}`);
+      return router.push(`/receipts/${receipt.id}`);
     },
     onSuccess: () => {
       toast.success(
