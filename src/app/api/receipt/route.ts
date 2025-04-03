@@ -10,6 +10,7 @@ export async function POST(request: NextRequest) {
     const cart: Product[] = JSON.parse(body.cart);
     const customerName: string = body.customerName;
     const customerAddress: string = body.customerAddress;
+    const totalAmount: number = parseInt(body.totalAmount);
 
     // Create a new receipt in the db
     const receipt = await prisma.receipt.create({
@@ -17,6 +18,7 @@ export async function POST(request: NextRequest) {
         products: cart,
         customerName,
         customerAddress,
+        totalAmount
       },
     });
 

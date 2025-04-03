@@ -72,6 +72,9 @@ function CartDrawer() {
       // Create a new receipt
       const response = await axios.post("/api/receipt", {
         cart: JSON.stringify(cart),
+        customerAddress,
+        customerName,
+        totalAmount: totalPrice
       });
 
       const receipt = response.data.receipt;

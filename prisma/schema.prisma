@@ -22,13 +22,12 @@ model Product {
   category    String
   description String
   hot         Boolean
-  Receipt     Receipt? @relation(fields: [receiptId], references: [id])
   receiptId   String?
 }
 
 model Receipt {
   id              String    @id @default(cuid())
-  products        Product[]
+  products        Json[]
   createdAt       DateTime  @default(now())
   customerName    String
   customerAddress String
