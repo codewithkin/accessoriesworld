@@ -13,6 +13,8 @@ import { Badge } from "../../ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useCartStore } from "@/stores/useCartStore";
+import { Product } from "@/components/home/ProductsSwiper";
+import ProductInCart from "./ProductInCart";
 
 function CartDrawer() {
   // Get all the items in the user's cart
@@ -32,7 +34,15 @@ function CartDrawer() {
         </SheetHeader>
 
         {cart.length > 0 ? (
-          <h2>Something here</h2>
+          <article className="flex flex-col gap-2 h-full overflow-y-auto">
+            {/* Map all of the cart items */}
+
+            {
+              cart.map((product: Product) => (
+                <ProductInCart key={product.description} product={product} />
+              ))
+            }
+          </article>
         ) : (
           <article className="flex flex-col gap-4 items-center justify-center text-center w-full h-full">
             <CircleSlash
