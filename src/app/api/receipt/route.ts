@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
         products: cart,
         customerName,
         customerAddress,
-        totalAmount
+        totalAmount,
       },
     });
 

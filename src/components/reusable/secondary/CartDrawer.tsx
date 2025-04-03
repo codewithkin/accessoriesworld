@@ -74,15 +74,15 @@ function CartDrawer() {
         cart: JSON.stringify(cart),
         customerAddress,
         customerName,
-        totalAmount: totalPrice
+        totalAmount: totalPrice,
       });
 
       const receipt = response.data.receipt;
 
+      console.log("Receipt: ", receipt);
+
       // Redirect the user to the receipt download page
       redirect(`/receipts/${receipt.id}`);
-
-      return true;
     },
     onSuccess: () => {
       toast.success(
@@ -154,7 +154,9 @@ function CartDrawer() {
             >
               Clear Cart
             </Button>
-            {customerAddress.length < 1 || customerName.length < 1 || !details ? (
+            {customerAddress.length < 1 ||
+            customerName.length < 1 ||
+            !details ? (
               <Popover>
                 <PopoverTrigger asChild>
                   <Button variant="default">Enter details</Button>
@@ -162,14 +164,27 @@ function CartDrawer() {
                 <PopoverContent>
                   <form className="flex flex-col gap-4">
                     <Label>Your details</Label>
-                    <Input placeholder="Your name" value={customerName} onChange={(e) => setCustomerName(e.target.value)} />
-                    <Input placeholder="Your address" value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} />
-                    <Button type="button" onClick={() => {
-                      toast("Customer name and address updated successfully");
+                    <Input
+                      placeholder="Your name"
+                      value={customerName}
+                      onChange={(e) => setCustomerName(e.target.value)}
+                    />
+                    <Input
+                      placeholder="Your address"
+                      value={customerAddress}
+                      onChange={(e) => setCustomerAddress(e.target.value)}
+                    />
+                    <Button
+                      type="button"
+                      onClick={() => {
+                        toast("Customer name and address updated successfully");
 
-                      // Hide popover
-                      setTimeout(() => setDetails(true), 1000)
-                    }}>Save</Button>
+                        // Hide popover
+                        setTimeout(() => setDetails(true), 1000);
+                      }}
+                    >
+                      Save
+                    </Button>
                   </form>
                 </PopoverContent>
               </Popover>
