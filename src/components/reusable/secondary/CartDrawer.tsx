@@ -15,10 +15,34 @@ import Link from "next/link";
 import { useCartStore } from "@/stores/useCartStore";
 import { Product } from "@/components/home/ProductsSwiper";
 import ProductInCart from "./ProductInCart";
+import { useEffect, useState } from "react";
+
+const formatCurrency = (amount: number, currency = "USD") => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+  }).format(amount);
+};
 
 function CartDrawer() {
   // Get all the items in the user's cart
   const cart = useCartStore((state) => state.cart);
+
+  // Track the total price
+  const [totalPrice, setToalPrice] = useState(0);
+
+  useEffect(() => {
+    let price = 0;
+
+    // Calculate the total price
+    cart.map(
+      (prod: Product) => {
+        setToalPrice((price += prod.price));
+      },
+      [cart],
+    );
+  });
+
 
   return (
     <Sheet>
@@ -69,6 +93,12 @@ function CartDrawer() {
             </article>
           </article>
         )}
+
+        <article className="p-4 border-t border-slate-300 flex justify-between items-center">
+          <h3 className="text-xl font-semibold">Total</h3>
+
+          <p className="text-md font-semibold">{formatCurrency(totalPrice)}</p>
+        </article>
       </SheetContent>
     </Sheet>
   );
