@@ -33,7 +33,7 @@ function CartDrawer() {
   const cart = useCartStore((state) => state.cart);
 
   // Clear cart function
-  const clearCart = useCartStore(state => state.clearCart);
+  const clearCart = useCartStore((state) => state.clearCart);
 
   // Track the total price
   const [totalPrice, setToalPrice] = useState(0);
@@ -56,7 +56,9 @@ function CartDrawer() {
       // Make a request to paynow
 
       // Create a new receipt
-      const response = await axios.post("/api/receipt", {cart: JSON.stringify(cart)});
+      const response = await axios.post("/api/receipt", {
+        cart: JSON.stringify(cart),
+      });
 
       const receipt = response.data.receipt;
 
@@ -66,11 +68,13 @@ function CartDrawer() {
       return true;
     },
     onSuccess: () => {
-      toast.success("Psst, this is a test...real payments will be processed after we setup your bank account");
+      toast.success(
+        "Psst, this is a test...real payments will be processed after we setup your bank account",
+      );
 
       // Clear the cart
       clearCart();
-    }
+    },
   });
 
   return (
@@ -126,13 +130,17 @@ function CartDrawer() {
         <article className="w-full flex justify-end items-end px-4">
           <article className="flex gap-2 items-center">
             {/* Clear button */}
-          <Button variant="secondary" type="button" onClick={() => clearCart()}>
-            Clear Cart
-          </Button>
+            <Button
+              variant="secondary"
+              type="button"
+              onClick={() => clearCart()}
+            >
+              Clear Cart
+            </Button>
             {/* Checkout button */}
-          <Button type="button" onClick={() => checkout()}>
-            Pay now
-          </Button>
+            <Button type="button" onClick={() => checkout()}>
+              Pay now
+            </Button>
           </article>
         </article>
 
