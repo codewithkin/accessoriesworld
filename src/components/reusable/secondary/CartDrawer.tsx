@@ -16,6 +16,10 @@ import { useCartStore } from "@/stores/useCartStore";
 import { Product } from "@/components/home/ProductsSwiper";
 import ProductInCart from "./ProductInCart";
 import { useEffect, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { redirect } from "next/navigation";
+import axios from "axios";
 
 const formatCurrency = (amount: number, currency = "USD") => {
   return new Intl.NumberFormat("en-US", {
@@ -27,6 +31,9 @@ const formatCurrency = (amount: number, currency = "USD") => {
 function CartDrawer() {
   // Get all the items in the user's cart
   const cart = useCartStore((state) => state.cart);
+
+  // Clear cart function
+  const clearCart = useCartStore(state => state.clearCart);
 
   // Track the total price
   const [totalPrice, setToalPrice] = useState(0);
@@ -43,6 +50,28 @@ function CartDrawer() {
     );
   });
 
+  const { mutate: checkout, isPending: loading } = useMutation({
+    mutationKey: ["checkout"],
+    mutationFn: async () => {
+      // Make a request to paynow
+
+      // Create a new receipt
+      const response = await axios.post("/api/receipt", {cart: JSON.stringify(cart)});
+
+      const receipt = response.data.receipt;
+
+      // Redirect the user to the receipt download page
+      redirect(`/receipts/${receipt.id}`);
+
+      return true;
+    },
+    onSuccess: () => {
+      toast.success("Psst, this is a test...real payments will be processed after we setup your bank account");
+
+      // Clear the cart
+      clearCart();
+    }
+  });
 
   return (
     <Sheet>
@@ -93,6 +122,13 @@ function CartDrawer() {
             </article>
           </article>
         )}
+
+        <article className="w-full flex justify-end items-end px-4">
+          {/* Checkout button */}
+          <Button type="button" onClick={() => checkout()}>
+            Pay now
+          </Button>
+        </article>
 
         <article className="p-4 border-t border-slate-300 flex justify-between items-center">
           <h3 className="text-xl font-semibold">Total</h3>
