@@ -16,16 +16,18 @@ import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { Flame } from "lucide-react";
 
+export type Product = {
+  name: string;
+  imageUrl: string;
+  stock: number;
+  price: number;
+  category: "accessory" | "device" | "both" | "add-on";
+  description: string;
+  hot?: boolean;
+}
+
 function ProductsSwiper() {
-  const products: {
-    name: string;
-    imageUrl: string;
-    stock: number;
-    price: number;
-    category: "accessory" | "device" | "both" | "add-on";
-    description: string;
-    hot?: boolean;
-  }[] = [
+  const products: Product[] = [
     {
       name: "Real Me Bluetooth Headphones",
       imageUrl: "/products/realme-bluetooth-headphones.jpg",
@@ -135,7 +137,7 @@ function ProductsSwiper() {
       onSwiper={(swiper) => console.log(swiper)}
       className="justify-center items-center"
     >
-      {products.map((product, index) => (
+      {products.map((product: Product, index: number) => (
         <SwiperSlide key={index}>
           <Card className="flex flex-col items-center justify-center w-fit">
             <CardContent>

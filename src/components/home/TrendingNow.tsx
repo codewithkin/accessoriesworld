@@ -5,6 +5,7 @@ function TrendingNow() {
   return (
     <AnimateIntoView>
       <section className="section px-4 md:px-20 flex flex-col justify-center items-center">
+        {/* Heading and subheading */}
         <article className="flex flex-col items-center justify-center text-center">
           <h3 className="heading">Trending Now at Accessories World</h3>
           <p className="subheading">
@@ -12,6 +13,9 @@ function TrendingNow() {
             before they’re gone!
           </p>
         </article>
+
+        {/* Actual items */}
+        
       </section>
     </AnimateIntoView>
   );
