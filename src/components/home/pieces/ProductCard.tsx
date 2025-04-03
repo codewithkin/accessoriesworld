@@ -23,7 +23,7 @@ function ProductCard({ product }: { product: Product }) {
 
       // Show a success toast
       toast.success(`Successfully added 1 ${item.name} to cart`, {
-        action: <CartDrawer />,
+        action: <article><CartDrawer /></article>,
       });
     } catch (e) {
       console.log(`An error occured while adding ${item.name} item to cart`);
