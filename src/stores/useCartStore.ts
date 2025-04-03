@@ -22,14 +22,14 @@ const getCartFromStorage = (): Product[] => {
 
 export const useCartStore = create<State & Action>((set) => ({
   cart: getCartFromStorage(),
-  
+
   addItemToCart: (item: Product) =>
     set((state) => {
       const updatedCart = [...state.cart, item];
       localStorage.setItem("cart", JSON.stringify(updatedCart));
       return { cart: updatedCart };
     }),
-  
+
   clearCart: () =>
     set(() => {
       localStorage.removeItem("cart");

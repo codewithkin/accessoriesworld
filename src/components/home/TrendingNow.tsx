@@ -124,10 +124,21 @@ function TrendingNow() {
           </article>
 
           {/* View all products CTA */}
-          <Button className="w-fit flex gap-2 items-center self-end" variant="secondary">
-            <Link className="w-fit flex gap-2 items-center self-end" href="/products">
-            <span>All Products</span>
-            <ArrowRight className="animate-caret-blink" strokeWidth={1.5} size={24} /></Link>
+          <Button
+            className="w-fit flex gap-2 items-center self-end"
+            variant="secondary"
+          >
+            <Link
+              className="w-fit flex gap-2 items-center self-end"
+              href="/products"
+            >
+              <span>All Products</span>
+              <ArrowRight
+                className="animate-caret-blink"
+                strokeWidth={1.5}
+                size={24}
+              />
+            </Link>
           </Button>
         </article>
       </section>
