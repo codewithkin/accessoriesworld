@@ -4,6 +4,7 @@ import { Product } from "./ProductsSwiper";
 import ProductCard from "./pieces/ProductCard";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 function TrendingNow() {
   const products: Product[] = [
@@ -123,9 +124,10 @@ function TrendingNow() {
           </article>
 
           {/* View all products CTA */}
-          <Button className="w-fit self-end" variant="secondary">
+          <Button className="w-fit flex gap-2 items-center self-end" variant="secondary">
+            <Link className="w-fit flex gap-2 items-center self-end" href="/products">
             <span>All Products</span>
-            <ArrowRight size={24} />
+            <ArrowRight className="animate-caret-blink" strokeWidth={1.5} size={24} /></Link>
           </Button>
         </article>
       </section>
