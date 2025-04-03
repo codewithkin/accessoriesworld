@@ -19,11 +19,11 @@ function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <article className="flex flex-col gap-4 w-fit">
+    <article className="flex flex-col gap-4 w-full">
       <img
         src={product.imageUrl}
         alt={product.name}
-        className="rounded-lg w-full h-80"
+        className="rounded-lg w-full h-full"
       />
 
       {/* Product details */}
@@ -48,14 +48,14 @@ function ProductCard({ product }: { product: Product }) {
         {/* Add to cart btn */}
         <article className="flex md:flex-row flex-col gap-2 items-center w-full">
           <Button
-            className="flex gap-2 items-center w-fit"
+            className="flex gap-2 items-center md:w-fit w-full"
             onClick={() => addToCart(product)}
             variant="default"
           >
             <span className="font-medium">Add to cart</span>
             <Plus size={24} />
           </Button>
-          <Button className="flex gap-2 items-center w-fit" variant="ghost">
+          <Button className="flex gap-2 items-center md:w-fit w-full" variant="ghost">
             <span>More info</span>
             <Info size={24} />
           </Button>
