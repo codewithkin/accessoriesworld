@@ -8,18 +8,25 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../../ui/sheet";
-import { CircleSlash, ShoppingCart } from "lucide-react";
+import { CircleSlash, Loader2, ShoppingCart } from "lucide-react";
 import { Badge } from "../../ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useCartStore } from "@/stores/useCartStore";
 import { Product } from "@/components/home/ProductsSwiper";
 import ProductInCart from "./ProductInCart";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
 import axios from "axios";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const formatCurrency = (amount: number, currency = "USD") => {
   return new Intl.NumberFormat("en-US", {
@@ -32,11 +39,18 @@ function CartDrawer() {
   // Get all the items in the user's cart
   const cart = useCartStore((state) => state.cart);
 
+  // Check whether or not the user's details have been updates
+  const [details, setDetails] = useState(false);
+
   // Clear cart function
   const clearCart = useCartStore((state) => state.clearCart);
 
   // Track the total price
   const [totalPrice, setToalPrice] = useState(0);
+
+  // Track the customer's name and address
+  const [customerName, setCustomerName] = useState("");
+  const [customerAddress, setCustomerAddress] = useState("");
 
   useEffect(() => {
     let price = 0;
@@ -137,10 +151,35 @@ function CartDrawer() {
             >
               Clear Cart
             </Button>
-            {/* Checkout button */}
-            <Button type="button" onClick={() => checkout()}>
-              Pay now
-            </Button>
+            {customerAddress.length < 1 || customerName.length < 1 || !details ? (
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="default">Enter details</Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <form className="flex flex-col gap-4">
+                    <Label>Your details</Label>
+                    <Input placeholder="Your name" value={customerName} onChange={(e) => setCustomerName(e.target.value)} />
+                    <Input placeholder="Your address" value={customerAddress} onChange={(e) => setCustomerAddress(e.target.value)} />
+                    <Button type="button" onClick={() => {
+                      toast("Customer name and address updated successfully");
+
+                      // Hide popover
+                      setTimeout(() => setDetails(true), 1000)
+                    }}>Save</Button>
+                  </form>
+                </PopoverContent>
+              </Popover>
+            ) : (
+              <Button
+                disabled={loading}
+                type="button"
+                onClick={() => checkout()}
+              >
+                {loading && <Loader2 className="animate-spin" />}
+                <span>{loading ? "Paying..." : "Pay now"}</span>
+              </Button>
+            )}
           </article>
         </article>
 
