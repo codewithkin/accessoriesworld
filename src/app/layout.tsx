@@ -5,6 +5,7 @@ import Navbar from "@/components/reusable/DesktopNavbar";
 import Footer from "@/components/reusable/Footer";
 import MobileNavbar from "@/components/reusable/MobileNavbar";
 import QueryClientWrapper from "@/providers/QueryClientWrapper";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
           <MobileNavbar />
           {children}
           <Footer />
+          <Toaster richColors expand position="top-center" />
         </QueryClientWrapper>
       </body>
     </html>
