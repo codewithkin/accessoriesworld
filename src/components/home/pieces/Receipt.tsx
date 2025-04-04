@@ -5,25 +5,30 @@ import { Label } from "@/components/ui/label";
 import { Product, Receipt as ReceiptType } from "@prisma/client";
 import { CheckCheckIcon } from "lucide-react";
 import { format } from "date-fns";
-import html2canvas from "html2canvas";
 
 function Receipt({ receipt }: { receipt: any }) {
-  const handleDownloadReceipt = () => {
-    const element = document.getElementById("receipt-container");
-    if (element) {
-      html2canvas(element, { scale: 3 }).then((canvas) => {
-        const imageData = canvas.toDataURL("image/png");
-        const link = document.createElement("a");
-        link.href = imageData;
-        link.download = "receipt.png";
-        link.click();
-      });
-    }
-  };
+  async function handleDownloadReceipt () {
+    const element = document.getElementById("receipt");
+    if (!element) return;
 
+    const html2pdf = (await import("html2pdf.js")).default;
+  
+    html2pdf(element, {
+      margin: 0,
+      filename: `receipt-${receipt.id}.pdf`,
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    });
+    // const pdf = await html2pdf().from(element).toPdf();
+    // pdf.save(`receipt-${receipt.id}.pdf`);
+    // const blob = await pdf.output("blob");
+    // const url = URL.createObjectURL(blob);
+    // const a = document.createElement("a");
+  }
   return (
     <article
-      id="receipt-container"
+    id="receipt"
       className="rounded-xl shadow-md bg-white py-4 px-4 md:px-12 border border-purple-200"
     >
       <article className="flex flex-col gap-8 items-center">
@@ -111,7 +116,7 @@ function Receipt({ receipt }: { receipt: any }) {
       <Button
         className="w-full"
         variant="default"
-        onClick={handleDownloadReceipt}
+        // onClick={handleDownloadReceipt}
       >
         Download Receipt
       </Button>
