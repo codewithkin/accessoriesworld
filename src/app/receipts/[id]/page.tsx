@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import axios from "axios";
 import { Skeleton } from "@/components/ui/skeleton";
 import Receipt from "@/components/home/pieces/Receipt";
+import { InfoIcon } from "lucide-react";
 
 function ReceiptPage() {
   // Get the receipt's id
@@ -41,6 +42,16 @@ function ReceiptPage() {
         ) : (
           <Receipt receipt={receipt} />
         )}
+        <article className="flex gap-2 items-center p-4 rounded-xl border border-blue-500">
+          <article className="p-4 rounded-full border bg-slate-100">
+            <InfoIcon size={24} className="text-blue-500" />
+          </article>
+
+          <article className="flex flex-col">
+            <h3 className="text-xl font-semibold">Having trouble with your payment ?</h3>
+            <p className="text-slate-500">Reach out to us and we'll help !</p>
+          </article>
+          </article>        
       </article>
     </section>
   );
