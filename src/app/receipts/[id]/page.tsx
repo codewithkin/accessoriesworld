@@ -48,10 +48,12 @@ function ReceiptPage() {
           </article>
 
           <article className="flex flex-col">
-            <h3 className="text-xl font-semibold">Having trouble with your payment ?</h3>
+            <h3 className="text-xl font-semibold">
+              Having trouble with your payment ?
+            </h3>
             <p className="text-slate-500">Reach out to us and we'll help !</p>
           </article>
-          </article>        
+        </article>
       </article>
     </section>
   );

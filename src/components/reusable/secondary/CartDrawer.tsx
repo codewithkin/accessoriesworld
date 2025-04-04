@@ -91,15 +91,13 @@ function CartDrawer() {
         "Psst, this is a test...real payments will be processed after we setup your bank account",
       );
 
-         // Redirect the user to the receipt download page
-         router.push(`/receipts/${receipt.id}`);
+      // Redirect the user to the receipt download page
+      router.push(`/receipts/${receipt.id}`);
 
-         setToalPrice(0)
+      setToalPrice(0);
 
       // Clear the cart
       clearCart();
-
-         
     },
   });
 
